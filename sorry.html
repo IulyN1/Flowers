@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <title>I am so sorry... 🥺</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- FontAwesome for cute icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="styles/sorry.css" />
+    <!-- Canvas Confetti CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  </head>
+  <body>
+    <!-- Background sparkles & hearts container -->
+    <div class="background-decorations" id="bg-decorations"></div>
+
+    <div class="wrapper">
+      <!-- The Apology Card -->
+      <main class="card" id="apology-card">
+        <div class="card-icon">
+          <i class="fa-solid fa-heart-crack pulse-broken"></i>
+        </div>
+
+        <h1 class="title">I'm so sorry, my love...</h1>
+
+        <p class="apology-text">
+          I made a mistake, and I apologize for the way I handled the situation. It was so childish of me, and I regret
+          it deeply. Please know that you mean the world to me and I can't imagine my life without you.
+        </p>
+
+        <p class="plea-text">Please don't break up with me. I want to listen, learn, and make things right.</p>
+
+        <div class="question-container">
+          <h2 class="question">Do you forgive me? 🥺</h2>
+          <div class="button-group">
+            <button class="btn btn-yes" id="yes-btn"><span>YES</span> <i class="fa-solid fa-heart"></i></button>
+            <button class="btn btn-no" id="no-btn"><span>NO</span> <i class="fa-solid fa-face-sad-tear"></i></button>
+          </div>
+        </div>
+      </main>
+
+      <!-- The Success Popup/Card (hidden initially) -->
+      <section class="card success-card hidden" id="success-card">
+        <div class="card-icon success-icon">
+          <i class="fa-solid fa-hands-holding-heart bounce-heart"></i>
+        </div>
+
+        <h1 class="success-title">Thank you! ❤️</h1>
+
+        <p class="success-text">
+          You have no idea how much this means to me. I promise to be more mature, communicate better, and love you more
+          and more every single day.
+        </p>
+
+        <p class="love-note">I love you to the moon and back! 🌙✨</p>
+
+        <button class="btn btn-close" id="close-success-btn">Close <i class="fa-solid fa-circle-check"></i></button>
+      </section>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="scripts/sorry.js"></script>
+  </body>
+</html>

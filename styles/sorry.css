@@ -1,0 +1,452 @@
+/* Design System Variables */
+:root {
+    --bg-gradient: linear-gradient(135deg, #ffeef8 0%, #eef3ff 50%, #fff0f0 100%);
+    --card-bg: rgba(255, 255, 255, 0.45);
+    --card-border: rgba(255, 182, 193, 0.4);
+    --text-primary: #3d2a44;
+    --text-secondary: #6e5c77;
+    --color-yes: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+    --color-yes-hover: linear-gradient(135deg, #ff6b84 0%, #ff6eac 100%);
+    --color-no: #8b7d91;
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --shadow-md: 0 10px 15px -3px rgba(255, 117, 140, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 20px 25px -5px rgba(255, 117, 140, 0.25), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Outfit', sans-serif;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    height: -webkit-fill-available; /* fix for mobile Safari */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    touch-action: none; /* disables pull-to-refresh & double-tap zoom */
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--bg-gradient);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-primary);
+    position: relative;
+}
+
+/* Background Decorations */
+.background-decorations {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.floating-heart {
+    position: absolute;
+    color: rgba(255, 117, 140, 0.15);
+    font-size: 1.5rem;
+    animation: floatUp 8s linear infinite;
+    bottom: -50px;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(1);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-105vh) rotate(360deg) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Wrapper Layout */
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh; /* dynamic viewport height */
+    padding: 16px;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Glassmorphism Card styling */
+.card {
+    background: var(--card-bg);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1.5px solid var(--card-border);
+    border-radius: 24px;
+    padding: 30px 24px;
+    width: 100%;
+    max-width: 400px;
+    max-height: 90vh;
+    max-height: 90dvh;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 30px -5px rgba(255, 117, 140, 0.3), 0 12px 12px -5px rgba(0, 0, 0, 0.05);
+}
+
+/* Card Icons */
+.card-icon {
+    font-size: 4rem;
+    margin-bottom: 25px;
+    display: inline-block;
+}
+
+.pulse-broken {
+    color: #ff5e7e;
+    animation: heartbeatBroken 2s infinite ease-in-out;
+}
+
+@keyframes heartbeatBroken {
+    0%, 100% { transform: scale(1); }
+    30% { transform: scale(1.1); }
+    40% { transform: scale(1.05); }
+    50% { transform: scale(1.15); }
+}
+
+.success-icon {
+    color: #ff477e;
+}
+
+.bounce-heart {
+    animation: successBounce 2.5s infinite ease-in-out;
+}
+
+@keyframes successBounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-12px) scale(1.1); }
+}
+
+/* Typography */
+.title {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    background: linear-gradient(45deg, #ff4e7e, #b83b5e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.apology-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+    font-weight: 300;
+}
+
+.plea-text {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin-bottom: 30px;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.question-container {
+    margin-top: 25px;
+}
+
+.question {
+    font-size: 1.35rem;
+    margin-bottom: 25px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+/* Buttons System */
+.button-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    min-height: 60px; /* helpful buffer space for when NO moves */
+    position: relative;
+}
+
+.btn {
+    border: none;
+    outline: none;
+    padding: 14px 28px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn span {
+    letter-spacing: 0.05em;
+}
+
+.btn-yes {
+    background: var(--color-yes);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 117, 140, 0.4);
+    position: relative;
+    overflow: hidden;
+    animation: gentle-pulse 2s infinite;
+}
+
+.btn-yes::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: all 0.6s;
+}
+
+.btn-yes:hover::before {
+    left: 100%;
+}
+
+.btn-yes:hover {
+    transform: scale(1.08);
+    background: var(--color-yes-hover);
+    box-shadow: 0 6px 20px rgba(255, 117, 140, 0.6);
+}
+
+@keyframes gentle-pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(255, 117, 140, 0.5);
+    }
+    70% {
+        box-shadow: 0 0 0 12px rgba(255, 117, 140, 0);
+    }
+}
+
+.btn-no {
+    background: white;
+    color: var(--text-secondary);
+    border: 1.5px solid rgba(139, 125, 145, 0.3);
+    z-index: 1000; /* stays on top when absolute/fixed */
+}
+
+/* We style the moved class for smooth transition, but script will use high z-index and handle positioning */
+.btn-no.dodging {
+    position: fixed;
+    transition: all 0.15s ease-out; /* tiny delay to make it look smooth yet hard to catch */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Success Card Spec */
+.success-card {
+    border-color: rgba(255, 182, 193, 0.6);
+    background: rgba(255, 255, 255, 0.65);
+    animation: scaleUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.success-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #ff2e63, #ff758c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.success-text {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.love-note {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #d13b5e;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.btn-close {
+    background: #2b1b3d;
+    color: white;
+    padding: 12px 24px;
+}
+
+.btn-close:hover {
+    transform: scale(1.05);
+    background: #412a5c;
+}
+
+/* Utility classes */
+.hidden {
+    display: none !important;
+}
+
+/* Fade Out animation */
+.fade-out {
+    opacity: 0;
+    transform: scale(0.9);
+    pointer-events: none;
+}
+
+/* Responsive adjust */
+@media (max-width: 400px) {
+    .card {
+        padding: 30px 20px;
+    }
+    
+    .title {
+        font-size: 1.8rem;
+    }
+    
+    .button-group {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+    
+    /* Make sure No button on mobile is still absolute/fixed when dodging */
+    .btn-no.dodging {
+        width: auto;
+    }
+}
+
+/* Height-based media query for smaller screens (e.g., landscape mobile) */
+@media (max-height: 660px) {
+    .card {
+        padding: 20px;
+        border-radius: 16px;
+    }
+    
+    .card-icon {
+        font-size: 2.5rem;
+        margin-bottom: 12px;
+    }
+    
+    .title {
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+    }
+    
+    .apology-text {
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+        line-height: 1.4;
+    }
+    
+    .plea-text {
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+        line-height: 1.4;
+    }
+    
+    .question {
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Very small viewport heights (landscape mobile) */
+@media (max-height: 520px) {
+    .card {
+        padding: 12px 16px;
+        border-radius: 12px;
+    }
+    
+    .card-icon {
+        font-size: 1.8rem;
+        margin-bottom: 6px;
+    }
+    
+    .title {
+        font-size: 1.25rem;
+        margin-bottom: 6px;
+    }
+    
+    .apology-text {
+        font-size: 0.85rem;
+        margin-bottom: 4px;
+        line-height: 1.3;
+    }
+    
+    .plea-text {
+        font-size: 0.85rem;
+        margin-bottom: 8px;
+        line-height: 1.3;
+    }
+    
+    .question {
+        font-size: 0.95rem;
+        margin-bottom: 10px;
+    }
+    
+    .btn {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+    }
+}
+
+
